@@ -14,47 +14,20 @@
 
 using namespace std;
 
-//ameliorer_delaunay ne marche pas
+//Test de la résolution directe en utilisant l'algorithme de widemann 
+//avec des matrices creuses
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(600, 600), "Maillage");
 
-
     std::vector<point> sommets_poly;
     sommets_poly.clear();
 
-    // sommets_poly.push_back( point(100.0,100.0) );
-    // sommets_poly.push_back( point(200.0,70.0) );
-    // sommets_poly.push_back( point(300.0,140.0) );
-    // sommets_poly.push_back( point(400.0,100.0) );
-    // sommets_poly.push_back( point(400.0,400.0) );
-    // sommets_poly.push_back( point(180.0,400.0) );
-    // sommets_poly.push_back( point(180.0,300.0) );
-    // sommets_poly.push_back( point(150.0,300.0) );
-    // sommets_poly.push_back( point(150.0,450.0) );
-    // sommets_poly.push_back( point(200.0,450.0) );
-    // sommets_poly.push_back( point(200.0,480.0) );
-    // sommets_poly.push_back( point(130.0,480.0) );
-    // sommets_poly.push_back( point(100.0,400.0) );
-
-
-    //EX1 Q4
     sommets_poly.push_back( point( 0.0, 0.0 ) );
     sommets_poly.push_back( point( 1.0, 0.0 ) );
     sommets_poly.push_back( point( 1.0, 1.0 ) );
     sommets_poly.push_back( point( 0.0, 1.0 ) );
-
-
-    /*
-    //EX1 Q8
-    sommets_poly.push_back( point( 0.0, 0.0 ) );
-    sommets_poly.push_back( point( 0.5, 0.0 ) );
-    sommets_poly.push_back( point( 0.5, 0.5 ) );
-    sommets_poly.push_back( point( 1.0, 0.5 ) );
-    sommets_poly.push_back( point( 1.0, 1.0 ) );
-    sommets_poly.push_back( point( 0.0, 1.0 ) );
-    */
 
 
     cout<<"Création du maillage"<<endl;
@@ -81,18 +54,6 @@ int main()
     matrice<real> U (resolution_nc(K,B,mai));
     //matrice U = reference(mai);
 
-    /*
-    //EX1 Q8
-    cout<<"Initialisation"<<endl;
-    matrice<real> K( matrice_rigidite_nc(mai) );
-    matrice<real> f( source_nulle(mai) );
-    matrice<real> B( second_membre_nc(f,mai));
-    cout<<"Résolution directe"<<endl;
-    matrice<real> U0 (resolution_nc(K,B,mai));
-    cout<<"Reconstruction de la solution totale"<<endl;
-    matrice<real> U( dirichlet_q8(mai) + U0);
-    //matrice U = reference(mai);
-    */
 
 
     while (window.isOpen())
@@ -109,8 +70,6 @@ int main()
         
         affichage_solution_nc(U,mai,window);
         //mai.draw(window);
-
-        //tracer(X,Y,window);
 
 
         window.display();
