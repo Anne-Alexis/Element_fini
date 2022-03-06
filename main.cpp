@@ -11,6 +11,7 @@
 
 #include "header/fem_nc.hpp"
 #include "header/parametres.hpp"
+#include "header/polynome.hpp"
 
 using namespace std;
 
@@ -19,6 +20,33 @@ using namespace std;
 
 int main()
 {
+    //Test des polynomes
+    std::vector<real> V={1,2,3,4,5,6,7,8,9,10};
+    polynome<real> P(V);
+    cout<<"degre :" << P.get_degre()<<endl;
+    cout<<P[0]<<endl;
+    cout<<P[1]<<endl;
+    cout<<P[9]<<endl;
+    //cout<<P[11]<<endl;
+    cout<<P<<endl;
+    cout<<P+P<<endl;
+    cout<<P*P<<endl;
+    cout<<P<<endl;
+
+    P*=2;
+    cout<<P<<endl;
+    P/=3;
+    cout<<P<<endl;
+    P.ajoute_coeff(0.4);
+    cout<<P<<endl;
+
+    cout<<"Essai polynomes de tailles différentes"<<endl;
+    polynome<real> Q(std::vector<real> {-1,-2,-3,-4});
+    cout<<P+Q<<endl;
+    cout<<P-Q<<endl;
+    cout<<P*Q<<endl;
+
+    /*
     sf::RenderWindow window(sf::VideoMode(600, 600), "Maillage");
 
     std::vector<point> sommets_poly;
@@ -74,6 +102,7 @@ int main()
 
         window.display();
     }
+    */
 
     return 0;
 }
